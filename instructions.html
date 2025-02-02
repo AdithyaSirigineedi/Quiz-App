@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quiz Instructions</title>
+<style>
+@import url(
+"https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900&display=swap");
+*{
+    box-sizing: border-box;
+}
+body{
+    font-family: "Poppins", sans-serif;
+    display:flex;
+    background-color: aliceblue;
+    align-items:center;
+    justify-content: center;
+    height:100vh;
+    overflow:hidden;
+    margin:0;
+}
+.container{
+    box-shadow:0 0 10px 2px rgba(100,100,100,0.1); 
+    border-radius:10px;
+    width:40%;
+    background-color:#fff;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    box-sizing: border-box;
+}
+li::marker{
+    content:"✔";
+    font-weight:bold;
+}
+button{
+    width:100%;
+    font-size:20px;
+    border:none;
+    font-family: inherit;
+    color:white;
+    background-color:#03cae4;
+    cursor:pointer;
+    display:block;
+    border-bottom-left-radius: 10px;
+    border-bottom-right-radius: 10px;
+    font-weight:500;
+    padding:.5em;
+    text-align: center;
+    letter-spacing:4px;
+}
+button:hover{
+    background-color:#04adc4;
+}
+button:focus{
+    background-color:#44b927;
+}
+ul{
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+}
+ul li{
+    margin:5%;
+}
+a{
+    text-decoration: none;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+}
+h4{
+    text-align: center;
+    margin-top:10%;
+}
+span{
+    font-size:40px;
+}
+</style>
+</head>
+<body>
+<div class="container">
+    <div class="quiz-inst">
+        <ul>
+            <li> Please make sure your internet is connected properly</li>
+            <li> Try to attempt all the questions</li>
+            <li> Don't copy answers from the internet</li>
+            <li> If you copied you will be awarded '0' Marks</li>
+            <li> You should turn on your webcam while writing the quiz exam</li>
+            <li> Each Question consists of '1' Mark</li>
+            <li> No Negative Marking in the Quiz</li>
+            <h4>Best of Luck <span>🎊</span></h4>
+        </ul>
+    </div>
+    <a href="./quiz.html"><button>OK</button></a>
+</div>
+</body>
+</html>

@@ -1,0 +1,280 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Quiz App</title>
+<style>
+ @import url(
+"https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900&display=swap");
+*{
+    box-sizing: border-box;
+}
+body{
+    font-family: "Poppins", sans-serif;
+    display:flex;
+    background-image:url('./quiz.jpeg');
+    background-repeat: no-repeat;
+    background-position: cover;
+    align-items:center;
+    justify-content: center;
+    height:100vh;
+    overflow:hidden;
+    margin:0;
+    flex-direction: column;
+}
+.container{
+    box-shadow:0 0 10px 2px rgba(100,100,100,0.1); 
+    border-radius:10px;
+    width:40%;
+    background-color:#fff;
+    margin-bottom:6%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+li{
+    list-style-type: none;
+}
+ul li{
+    font-size:20px;
+    margin:3%;
+    margin-top:3%;
+    user-select: none;
+}
+h2{
+    text-align: center;
+    margin:9%;
+    cursor:not-allowed;
+    user-select: none;
+}
+ul li label{
+    margin:3%;
+}
+button{
+    margin-top:3%;
+    width:100%;
+    padding:1em;
+    font-size:20px;
+    border:none;
+    font-family: inherit;
+    color:white;
+    background-color:#03cae4;
+    cursor:pointer;
+    display:block;
+    border-bottom-left-radius: 10px;
+    border-bottom-right-radius: 10px;
+    font-weight:500;
+}
+button:hover{
+    background-color:#04adc4;
+}
+button:focus{
+    background-color:#44b927;
+}
+input{
+    cursor:pointer;
+}
+h4{
+    text-align: center;
+    align-items: center;
+    justify-content: center;
+    margin-bottom:2%;
+}
+marquee{
+    z-index:1;
+    margin-top: 10px;
+    background-color: white;
+    font-weight:600;
+    font-size: 20px;
+    padding:1.5em;
+    display:block;
+}
+.container span{
+    font-weight:bold;
+    font-size:30px;
+    margin-left:3%;
+    margin-top:5%;
+}
+</style>
+</head>
+<body>
+<div class="container" id="quiz">
+    <div class="quiz">
+        <span id="quenum" onclick="Count()">1 . </span>
+        <h2 class="quiz-question" id="question">Quiz question</h2>
+        <ul>
+            <li>
+                <input type="radio" id="a" name="answer">
+                <label for="a" id="a_answer">Answer</label>
+            </li>
+            <li>
+                <input type="radio" id="b" name="answer">
+                <label for="b" id="b_answer">Answer</label>
+            </li>
+            <li>
+                <input type="radio" id="c" name="answer">
+                <label for="c" id="c_answer">Answer</label>
+            </li>
+            <li>
+                <input type="radio" id="d" name="answer">
+                <label for="d" id="d_answer">Answer</label>
+            </li>
+        </ul>
+    </div>
+    <button type="button" id="btn">Submit</button>
+</div>
+<div class="note">
+    <marquee>Note: Students should not copy the test</marquee>
+</div>
+<script>
+const quizData = [
+    {
+        question: "Which provides runtime environment for JS?",
+        a: "Java",
+        b: "Node.JS",
+        c: "Python",
+        d: "C",
+        correct: "b"
+    },
+    {
+        question: "HTML Stands for?",
+        a: "HYPER TEXT MARKUP LANGUAGE",
+        b: "HYPER TECH MARKUP LANGUAGE",
+        c: "HI TECH MARKER LANGUAGE",
+        d: "HIGHLY TEXT MARK LANGUAGE",
+        correct: "a"
+    },
+    {
+        question: "CSS Stands for?",
+        a: "CASCADING STRAIGHT SHEET",
+        b: "CONTROL STYLE SHEET",
+        c: "CASCADING STYLE SHEET",
+        d: "C STYLE SHEET",
+        correct: "c"
+    },
+    {
+        question: "In which year JS launched?",
+        a: "1990",
+        b: "1992",
+        c: "1890",
+        d: "1995",
+        correct: "d"
+    },
+    {
+        question: "Is JavaScript used in Webdevelopment?",
+        a: "Yes",
+        b: "No",
+        c: "None of the above",
+        correct: "a"
+    },
+    {
+        question: "How to declare a function in JS?",
+        a: "function (function)",
+        b: "(function name) function",
+        c: "function (function name)",
+        d: "None of the above",
+        correct: "c"
+    },
+    {
+        question: "Which comes under frontend webdevelopment?",
+        a: "HTML",
+        b: "CSS",
+        c: "Java Script",
+        d: "All the above",
+        correct: "d"
+    },
+    {
+        question: "Choose strictly equal to?",
+        a: "=",
+        b: "===",
+        c: "==",
+        d: "!==!",
+        correct: "b"
+    },
+    {
+        question: "How many datatypes are there in JS?",
+        a: "ONE",
+        b: "TWO",
+        c: "THREE",
+        d: "FOUR",
+        correct: "c"
+    },
+    {
+        question: "How to know the datatype in JS?",
+        a: "typeof()",
+        b: "Typeof()",
+        c: "TYPEOF()",
+        d: "tYpEoF()",
+        correct: "a"
+    }
+
+];
+alert("You have entered into quiz");
+const quiz = document.querySelector('#quiz');
+const question = document.querySelector('#question');
+const answerEls = document.querySelectorAll('input[name="answer"]');
+const a = document.getElementById("a_answer");
+const b = document.getElementById("b_answer");
+const c = document.getElementById("c_answer");
+const d = document.getElementById("d_answer");
+const btn = document.getElementById("btn");
+const quenum = document.querySelector("#quenum");
+
+let count = 1;
+let currentQuiz = 0;
+let score = 0;
+loadQuestions();
+function loadQuestions(){
+    deselectAnswers();
+    const currentQuizData = quizData[currentQuiz];
+    question.innerHTML = currentQuizData.question;
+    a.innerHTML = currentQuizData.a;
+    b.innerHTML = currentQuizData.b;
+    c.innerHTML = currentQuizData.c;
+    d.innerHTML = currentQuizData.d;
+}
+function deselectAnswers(){
+    answerEls.forEach(answerEl =>answerEl.checked = false);
+}
+function selected(){
+    let selectedAnswer;
+    answerEls.forEach(answerEl =>{
+        if(answerEl.checked) {
+            selectedAnswer = answerEl.id;
+        }
+    });
+    return selectedAnswer; 
+}
+
+function Count(){
+count+=1;
+quenum.innerHTML = count + " . ";
+}
+
+
+btn.addEventListener("click",() =>{
+    const answer = selected();
+    const currentQuizData = quizData[currentQuiz];
+    if(answer){
+        if(answer === currentQuizData.correct){
+            score++;
+
+        }
+        currentQuiz++;
+        Count();
+        
+        if(currentQuiz < quizData.length){
+            loadQuestions();
+        }else{
+            quiz.innerHTML = 
+            `<h2>You secured ${score}/${quizData.length} questions</h2>
+            <h4>Thanks for attempting!!!</h4>
+            <button onclick='location.reload()'>Reload</button>
+            `
+        }
+    }
+});
+</script>
+</body>
+</html>
